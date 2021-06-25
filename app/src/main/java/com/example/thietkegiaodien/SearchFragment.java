@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-public class MusicFragment extends Fragment {
+public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup mview = (ViewGroup) inflater.inflate(R.layout.fragment_music,container,false);
+        ViewGroup mview = (ViewGroup) inflater.inflate(R.layout.fragment_search,container,false);
 
         return mview;
     }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/search"
+            android:icon="@drawable/loupe"
+            android:title="Search" />
+
+        <item
+            android:id="@+id/code"
+            android:icon="@drawable/coding"
+            android:title="Code" />
+        <item
+            android:id="@+id/messager"
+            android:icon="@drawable/messenger"
+            android:title="Messenger" />
+    </group>
+    <item android:title="">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/email"
+                    android:icon="@drawable/gmail"
+                    android:title="Email" />
+                <item
+                    android:id="@+id/support"
+                    android:icon="@drawable/customerservice"
+                    android:title="Support" />
+                <item
+                    android:id="@+id/contact"
+                    android:icon="@drawable/googlecontacts"
+                    android:title="Contact" />
+                <item
+                    android:id="@+id/logout"
+                    android:icon="@drawable/logout"
+                    android:title="Log Out" />
+
+            </group>
+
+        </menu>
+
+
+    </item>
+</menu>
