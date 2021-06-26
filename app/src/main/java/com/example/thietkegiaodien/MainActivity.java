@@ -1,6 +1,5 @@
 package com.example.thietkegiaodien;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -44,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(fragment);
                         break;
                     case R.id.search:
-                        fragment = new SearchFragment();
+                        fragment = new ListFragment();
                         loadFragment(fragment);
                         break;
                     case R.id.code:
-                        fragment = new CodeFragment();
+                        fragment = new MusicFragment();
                         loadFragment(fragment);
                         break;
                     case R.id.messager:

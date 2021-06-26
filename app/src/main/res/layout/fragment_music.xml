@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C65F82"
+    tools:context=".MusicFragment">
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ten Bai Hat"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:textColor="@color/white"
+        android:id="@+id/tv_Title"
+        android:padding="10dp"
+        />
+    <ImageButton
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@null"
+        android:id="@+id/imgBtn_prev"
+        android:layout_height="wrap_content"
+        android:src="@drawable/left"/>
+
+    <ImageButton
+        android:id="@+id/imgBtn_sTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imgBtn_prev"
+        android:layout_marginBottom="20dp"
+        android:background="@null"
+        android:src="@drawable/stop" />
+    <ImageButton
+        android:id="@+id/imgBtn_pLay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imgBtn_sTop"
+        android:layout_marginBottom="20dp"
+        android:background="@null"
+        android:src="@drawable/play" />
+
+    <ImageButton
+        android:id="@+id/imgBtn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginBottom="17dp"
+        android:layout_toRightOf="@+id/imgBtn_pLay"
+        android:background="@null"
+        android:src="@drawable/right" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imgBtn_prev"/>
+    <TextView
+        android:id="@+id/textViewTimeSong"
+        android:text="00:00"
+        android:layout_marginLeft="30dp"
+        android:layout_above="@id/seekbar"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="00:00"
+        android:id="@+id/textViewTimeTotal"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/seekbar"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/dvd"
+        android:background="@null"
+        android:layout_marginVertical="150dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/tv_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cd" />
+</RelativeLayout>

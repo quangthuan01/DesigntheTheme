@@ -9,12 +9,12 @@
         <item
             android:id="@+id/search"
             android:icon="@drawable/loupe"
-            android:title="Search" />
+            android:title="List" />
 
         <item
             android:id="@+id/code"
             android:icon="@drawable/coding"
-            android:title="Code" />
+            android:title="Music" />
         <item
             android:id="@+id/messager"
             android:icon="@drawable/messenger"
