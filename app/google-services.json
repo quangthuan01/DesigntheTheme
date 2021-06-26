@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "131810034769",
+    "project_id": "thietkegiaodien-e9d0f",
+    "storage_bucket": "thietkegiaodien-e9d0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131810034769:android:ba60b8342b06c3df4d2470",
+        "android_client_info": {
+          "package_name": "com.example.thietkegiaodien"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131810034769-egj7k0rv3eg1019cb0c8g7kjors1i7ot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY9kwCZwSzJFJ2wW-0OYVwVV3zhoCc8Jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131810034769-egj7k0rv3eg1019cb0c8g7kjors1i7ot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
