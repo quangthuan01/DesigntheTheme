@@ -21,6 +21,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginTabFragment extends Fragment {
 
@@ -52,7 +53,7 @@ public class LoginTabFragment extends Fragment {
                     return;
 
                 }
-                if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     inputEditTextEmail.setError("Please enter a valid email!");
                     inputEditTextEmail.requestFocus();
                     return;
@@ -72,9 +73,20 @@ public class LoginTabFragment extends Fragment {
                     @Override
                     public void onComplete(Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //redirect to user profile
-                            startActivity(new Intent(getActivity(), MainActivity.class));
 
+                            //check email successfull
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if (user.isEmailVerified()) {
+
+                                //redirect to user profile
+                                startActivity(new Intent(getActivity(), MainActivity.class));
+
+                            } else {
+                                //send email
+                                user.sendEmailVerification();
+                                Toast.makeText(getActivity(), "Check your email to verify your account!", Toast.LENGTH_SHORT).show();
+
+                            }
                         } else {
                             Toast.makeText(getActivity(), "Failed to Login! Please check your credentials ", Toast.LENGTH_SHORT).show();
                         }

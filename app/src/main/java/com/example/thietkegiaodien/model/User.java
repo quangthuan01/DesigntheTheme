@@ -1,12 +1,13 @@
 package com.example.thietkegiaodien.model;
 
 public class User {
-    public  String name,phone,email;
+    public  String name,email,phone;
 
-    public User(String name, String phone, String email) {
+    public User(String name, String email, String phone) {
         this.name = name;
-        this.phone = phone;
         this.email = email;
+        this.phone = phone;
+
     }
 
     public User() {

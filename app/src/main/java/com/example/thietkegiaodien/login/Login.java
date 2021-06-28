@@ -6,11 +6,13 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.thietkegiaodien.R;
-import com.example.thietkegiaodien.adapter.LoginAdapter;
+import com.example.thietkegiaodien.adapter.LoginAdapterFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class Login extends AppCompatActivity {
+
+    //Initialize variable
     TabLayout tabLayout;
     ViewPager mviewPager;
     FloatingActionButton facebook, google, twitter;
@@ -20,37 +22,22 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        //Assign variable
         tabLayout = findViewById(R.id.tab_layout);
         mviewPager = findViewById(R.id.mview_pager);
         facebook = findViewById(R.id.fab_facebook);
         google = findViewById(R.id.fab_google);
         twitter = findViewById(R.id.fab_twitter);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Login"));
-        tabLayout.addTab(tabLayout.newTab().setText("Register"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
-        mviewPager.setAdapter(adapter);
-
-        mviewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
-//        facebook.setTranslationX(300);
-//        google.setTranslationX(300);
-//        twitter.setTranslationX(300);
-//        tabLayout.setTranslationX(300);
-//
-//        facebook.setAlpha(y);
-//        google.setAlpha(y);
-//        twitter.setAlpha(y);
-//        tabLayout.setAlpha(y);
-//
-//        facebook.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
-//        google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
-//        twitter.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
-//        tabLayout.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
+        //Initialize adapter
+         LoginAdapterFragment adapter = new LoginAdapterFragment(getSupportFragmentManager());
+         //add fragment
+            adapter.addFragmentLogin(new LoginTabFragment(),"Login");
+            adapter.addFragmentLogin(new RegisterTabFragment(),"Register");
+         //set adapter
+            mviewPager.setAdapter(adapter);
+         //connect tablayout with viewpager
+            tabLayout.setupWithViewPager(mviewPager);
 
     }
 }
