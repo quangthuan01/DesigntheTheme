@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class LoginTabFragment extends Fragment {
 
     EditText inputEditTextEmail, inputEditTextPass;
     TextInputLayout inputLayoutEmail, inputLayoutPass;
+    TextView forgetPass;
     FirebaseAuth mAuth;
     Button login;
     float y = 0;
@@ -38,6 +40,7 @@ public class LoginTabFragment extends Fragment {
         inputEditTextPass = mroot.findViewById(R.id.EditTextInputPass);
         inputLayoutEmail = mroot.findViewById(R.id.inputLayoutEmail);
         inputLayoutPass = mroot.findViewById(R.id.inputLayoutPass);
+        forgetPass= mroot.findViewById(R.id.forget_pass);
         login = mroot.findViewById(R.id.btn_login);
         mAuth = FirebaseAuth.getInstance();
 
@@ -92,6 +95,13 @@ public class LoginTabFragment extends Fragment {
                         }
                     }
                 });
+            }
+        });
+
+        forgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),ForgotPassWord.class));
             }
         });
 
