@@ -32,4 +32,32 @@
     <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/dark</item>
     </style>
+
+    <!--    //style annimation dialog left ->> right-->
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+
+    <!--    //style annimation dialog bottom ->> top-->
+
+    <style name="dialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_bottom</item>
+    </style>
+
+    <!--    //style annimation dialog trong->> ngoai -->
+
+    <style name="DialogforAnimation">
+        <item name="android:windowEnterAnimation">@anim/xoom_in</item>
+        <item name="android:windowExitAnimation">@anim/xoom_out</item>
+    </style>
+
+    <!--    //style annimation quay to ->> nho -->
+    <style name="animations" >
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
+
 </resources>

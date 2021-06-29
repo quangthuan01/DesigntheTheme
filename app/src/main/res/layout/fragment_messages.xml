@@ -4,5 +4,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#67ffae"
-    tools:context=".MessagesFragment">
+    tools:context=".fragment.MessagesFragment">
 </FrameLayout>

@@ -10,12 +10,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.thietkegiaodien.fragment.EmailFragment;
+import com.example.thietkegiaodien.fragment.HomeFragment;
+import com.example.thietkegiaodien.fragment.ListFragment;
+import com.example.thietkegiaodien.fragment.MessagesFragment;
+import com.example.thietkegiaodien.fragment.MusicFragment;
 import com.example.thietkegiaodien.login.Login;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        // Mặc đinh mới vào là Fragment Email
+        if(savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
+                    new EmailFragment()).commit();
+        }
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -70,7 +84,30 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.contact:
                         break;
                     case R.id.logout:
-                            thongbaoLogout();
+                        Dialog dialog = new Dialog(MainActivity.this);
+                        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                        dialog.setContentView(R.layout.dialog_logout);
+                        Button signout = dialog.findViewById(R.id.sign_out);
+                        Button exitapp = dialog.findViewById(R.id.exit_app);
+                        signout.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                FirebaseAuth.getInstance().signOut();
+                                dialog.dismiss();
+                                startActivity(new Intent(getApplicationContext(), Login.class));
+                                finish();
+                            }
+                        });
+                        exitapp.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent out= new Intent(Intent.ACTION_MAIN);
+                                out.addCategory(Intent.CATEGORY_HOME);
+                                startActivity(out);
+                                finish();
+                            }
+                        });
+                        dialog.show();
                         break;
                     default:
                         return true;
@@ -91,24 +128,5 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.closeDrawer(GravityCompat.START);
         fragmentTransaction.addToBackStack(null);
     }
-    private void thongbaoLogout(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setIcon(R.drawable.logout);
-        builder.setTitle("Thong Bao");
-        builder.setMessage("Ban Co Chac Chan Muon Dang Xuat Tai Khoan ?");
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                FirebaseAuth.getInstance().signOut();
-                dialog.dismiss();
-                startActivity(new Intent(getApplicationContext(), Login.class));
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-    }
+
 }

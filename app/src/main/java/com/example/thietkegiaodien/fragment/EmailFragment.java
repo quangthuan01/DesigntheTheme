@@ -1,4 +1,4 @@
-package com.example.thietkegiaodien;
+package com.example.thietkegiaodien.fragment;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thietkegiaodien.R;
 import com.example.thietkegiaodien.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

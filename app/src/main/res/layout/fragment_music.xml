@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C65F82"
-    tools:context=".MusicFragment">
+    tools:context=".fragment.MusicFragment">
     <TextView
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"

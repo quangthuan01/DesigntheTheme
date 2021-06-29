@@ -104,26 +104,6 @@ public class LoginTabFragment extends Fragment {
                 startActivity(new Intent(getActivity(),ForgotPassWord.class));
             }
         });
-
-
-//        inputLayoutEmail.setTranslationX(900);
-//        inputEditTextEmail.setTranslationX(900);
-//        inputLayoutPass.setTranslationX(900);
-//        inputEditTextPass.setTranslationX(900);
-//        login.setTranslationX(900);
-//
-//        inputLayoutEmail.setAlpha(y);
-//        inputEditTextEmail.setAlpha(y);
-//        inputLayoutPass.setAlpha(y);
-//        inputEditTextPass.setAlpha(y);
-//        login.setAlpha(y);
-//
-//        inputLayoutEmail.animate().translationY(0).alpha(1).setDuration(1100).setStartDelay(300).start();
-//        inputEditTextEmail.animate().translationY(0).alpha(1).setDuration(1100).setStartDelay(500).start();
-//        inputLayoutPass.animate().translationY(0).alpha(1).setDuration(1100).setStartDelay(700).start();
-//        inputEditTextPass.animate().translationY(0).alpha(1).setDuration(1100).setStartDelay(900).start();
-//        login.animate().translationY(0).alpha(1).setDuration(1100).setStartDelay(1100).start();
-
         return mroot;
     }
 }

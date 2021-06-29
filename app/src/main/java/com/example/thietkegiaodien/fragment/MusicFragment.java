@@ -1,4 +1,4 @@
-package com.example.thietkegiaodien;
+package com.example.thietkegiaodien.fragment;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.thietkegiaodien.R;
 import com.example.thietkegiaodien.model.Song;
 
 import java.text.SimpleDateFormat;
