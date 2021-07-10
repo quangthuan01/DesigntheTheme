@@ -20,7 +20,7 @@
         app:errorIconDrawable="@drawable/warning"
         app:helperText="Mandatory*"
         app:helperTextTextColor="@android:color/holo_red_dark"
-        app:startIconDrawable="@drawable/person">
+        app:startIconDrawable="@drawable/custom_focus_person">
 
         <EditText
             android:id="@+id/EditTextInputName_signup"
@@ -44,7 +44,7 @@
         app:errorIconDrawable="@drawable/warning"
         app:helperText="Opsional*"
         app:helperTextTextColor="@android:color/darker_gray"
-        app:startIconDrawable="@drawable/email">
+        app:startIconDrawable="@drawable/custom_focus_email">
 
         <EditText
             android:id="@+id/EditTextInputEmail_signup"
@@ -70,7 +70,7 @@
         app:helperText="Required*"
         app:errorIconDrawable="@drawable/warning"
         app:helperTextTextColor="@android:color/holo_red_dark"
-        app:startIconDrawable="@drawable/lock">
+        app:startIconDrawable="@drawable/custom_focus_lock">
 
         <EditText
             android:id="@+id/EditTextInputPass_signup"
@@ -99,7 +99,7 @@
         app:prefixText="+84"
         app:errorIconDrawable="@drawable/warning"
         app:helperTextTextColor="@android:color/holo_red_dark"
-        app:startIconDrawable="@drawable/lock">
+        app:startIconDrawable="@drawable/custom_focus_call">
 
         <EditText
             android:id="@+id/EditTextInputConfimPass_signup"

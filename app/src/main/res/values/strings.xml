@@ -7,4 +7,24 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <array name="courses">
+        <item>IPhone</item>
+        <item>SamSung</item>
+        <item>Oppo</item>
+        <item>Nokia</item>
+        <item>Huawai</item>
+        <item>BPhone</item>
+        <item>Xiaomi</item>
+        <item>VsMart</item>
+        <item>Sony</item>
+        <item>Vivo</item>
+        <item>Reale</item>
+        <item>Mobell</item>
+        <item>Masstel</item>
+        <item>Energizer</item>
+        <item>Itel</item>
+        <item>OnePlus</item>
+
+    </array>
 </resources>

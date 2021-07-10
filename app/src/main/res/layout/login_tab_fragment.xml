@@ -17,7 +17,7 @@
         app:endIconMode="clear_text"
         app:helperText="Required*"
         app:helperTextTextColor="@android:color/darker_gray"
-        app:startIconDrawable="@drawable/email">
+        app:startIconDrawable="@drawable/custom_focus_email">
 
         <EditText
             android:id="@+id/EditTextInputEmail"
@@ -43,7 +43,7 @@
         app:endIconMode="password_toggle"
         app:helperText="Required*"
         app:helperTextTextColor="@android:color/holo_red_dark"
-        app:startIconDrawable="@drawable/lock">
+        app:startIconDrawable="@drawable/custom_focus_lock">
 
         <EditText
             android:id="@+id/EditTextInputPass"
