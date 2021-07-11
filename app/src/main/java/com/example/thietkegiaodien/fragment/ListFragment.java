@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -126,7 +127,7 @@ public class ListFragment extends Fragment {
                 final EditText editTextNamePhone = dialog.findViewById(R.id.editTextNamePhone);
                 final EditText editTextOperatingsystem = dialog.findViewById(R.id.editTextOperatingsystem);
                 final EditText editTextPrice = dialog.findViewById(R.id.editTextPrice);
-                final Spinner spinner = dialog.findViewById(R.id.spinner_theloai);
+                final TextView textLoai = dialog.findViewById(R.id.text_theloai);
                 Button btnInsert = dialog.findViewById(R.id.btn_insert);
                 btnInsert.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -135,7 +136,7 @@ public class ListFragment extends Fragment {
                         String phoneName = editTextNamePhone.getText().toString();
                         String phoneOperatingsystem = editTextOperatingsystem.getText().toString();
                         String phonePrice = editTextPrice.getText().toString();
-                        String category = spinner.getSelectedItem().toString();
+                        String category = textLoai.getText().toString();
                         Category categoryModel = new Category(id, phoneName, phoneOperatingsystem, phonePrice, category);
                         phoneDbRef.child(categoryModel.getId()).setValue(categoryModel);
                         Toast.makeText(getActivity(), "Insert " + editTextNamePhone.getText().toString() + " successful", Toast.LENGTH_SHORT).show();

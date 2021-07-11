@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:layout_height="wrap_content"
-    android:background="#ECC7D4"
+    android:background="@drawable/anh2"
+    android:layout_margin="15dp"
     >
     <TextView
         android:textStyle="bold"
@@ -17,14 +19,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <Spinner
-        android:id="@+id/spinner_theloai"
+    <TextView
+        android:id="@+id/text_theloai"
+        android:background="@drawable/edittext_bavkround"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
+        android:textColor="@color/white"
         android:ems="10"
         android:padding="20dp"
-        android:entries="@array/courses"
         />
 
 
@@ -35,10 +38,10 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_bavkround"
         android:ems="10"
-        android:hint="Name Phone"
+        android:hint="@string/name_phone"
         android:inputType="textPersonName"
         android:padding="20dp"
-        android:textColor="@color/pink" />
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/editTextOperatingsystem"
@@ -47,9 +50,9 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_bavkround"
         android:ems="10"
-        android:hint="Operating system"
+        android:hint="@string/operating_system"
         android:padding="20dp"
-        android:textColor="@color/pink" />
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/editTextPrice"
@@ -58,24 +61,20 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext_bavkround"
         android:ems="10"
-        android:hint="Price"
+        android:hint="@string/price"
         android:inputType="number"
         android:padding="20dp"
-        android:textColor="@color/pink" />
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btn_insert"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:background="@drawable/button_backround"
-        android:text="Insert"
+        android:text="@string/insert"
+        android:textSize="20sp"
         app:backgroundTint="@color/pink"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPrice"
-        app:layout_constraintVertical_bias="0.2"
-        android:textAllCaps="true"/>
+        android:textAllCaps="false"/>
 </LinearLayout>

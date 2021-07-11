@@ -31,8 +31,6 @@ public class LoginTabFragment extends Fragment {
     TextView forgetPass;
     FirebaseAuth mAuth;
     Button login;
-    float y = 0;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup mroot = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
@@ -80,15 +78,12 @@ public class LoginTabFragment extends Fragment {
                             //check email successfull
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             if (user.isEmailVerified()) {
-
                                 //redirect to user profile
                                 startActivity(new Intent(getActivity(), MainActivity.class));
-
                             } else {
                                 //send email
                                 user.sendEmailVerification();
                                 Toast.makeText(getActivity(), "Check your email to verify your account!", Toast.LENGTH_SHORT).show();
-
                             }
                         } else {
                             Toast.makeText(getActivity(), "Failed to Login! Please check your credentials ", Toast.LENGTH_SHORT).show();

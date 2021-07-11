@@ -7,6 +7,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="insert">Insert</string>
+    <string name="price">Price</string>
+    <string name="operating_system">Operating system</string>
+    <string name="name_phone">Name Phone</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 
     <array name="courses">
         <item>IPhone</item>
