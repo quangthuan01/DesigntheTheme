@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:background="@drawable/background_item_list_loaichi">
+
+    <TextView
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/item_textKhoanChi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:textColor="@color/yellow"
+        android:text="TextView" />
+
+    <TextView
+        android:textSize="20sp"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/yellow"
+        android:id="@+id/item_textSoTienChi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+    <TextView
+        android:textSize="20sp"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/yellow"
+        android:id="@+id/item_DateKhoanChi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+</LinearLayout>

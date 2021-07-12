@@ -1,7 +1,9 @@
 package com.example.thietkegiaodien.fragment;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +46,7 @@ public class LoaiChiFragment extends Fragment {
     private ListView listLoaiChi;
     private MovableFloatingActionButton fabLoaiChi;
     private DatabaseReference DbRef;
+    private AlertDialog alertDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup mview = (ViewGroup) inflater.inflate(R.layout.fragment_chi_loaichi,container,false);
@@ -78,8 +81,8 @@ public class LoaiChiFragment extends Fragment {
                 Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.item_insert_loaichi);
                 //anhsa trong item dia log
-                final EditText editTextTitle = dialog.findViewById(R.id.item_text_loaichiTitle);
-                final TextView textDate = dialog.findViewById(R.id.item_text_loaichiDate);
+                 EditText editTextTitle = dialog.findViewById(R.id.item_text_loaichiTitle);
+                 TextView textDate = dialog.findViewById(R.id.item_text_loaichiDate);
                 Button chonDate  = dialog.findViewById(R.id.btn_ChonDate);
                 Button Insert = dialog.findViewById(R.id.btn_insert_LoaiChi);
 
@@ -133,7 +136,7 @@ public class LoaiChiFragment extends Fragment {
                 Button btn_Update = dialogLoaiChi.findViewById(R.id.updateLoaiChi);
 
                 edt_LoaiChi.setText(loaiChiModel.getTitleChi());
-                textDate1.setText(loaiChiModel.getDate());
+                textDate1.setText(loaiChiModel.getDateChi());
 
                 btn_Chon.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -168,8 +171,38 @@ public class LoaiChiFragment extends Fragment {
                 btn_Delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        deleteLoaiChi(_id_);
-                        dialogLoaiChi.dismiss();
+
+                        if (alertDialog == null) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            View view = LayoutInflater.from(getActivity()).inflate(
+                                    R.layout.dialog_thongbao_delete, null);
+                            builder.setView(view);
+                            alertDialog = builder.create();
+                            if (alertDialog.getWindow() != null) {
+                                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+                            }
+
+                            TextView textCancel = view.findViewById(R.id.textCancel);
+                            TextView textDelete = view.findViewById(R.id.textDelete);
+                            textDelete.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    deleteLoaiChi(_id_);
+                                    dialogLoaiChi.dismiss();
+                                    alertDialog.dismiss();
+
+                                }
+                            });
+                            textCancel.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    alertDialog.dismiss();
+                                }
+                            });
+
+                        }
+                        alertDialog.show();
+
                     }
                 });
 
@@ -188,7 +221,7 @@ public class LoaiChiFragment extends Fragment {
         task.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(getActivity(), "Delete successful", Toast.LENGTH_SHORT).show();
+              showThongBao();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -202,6 +235,18 @@ public class LoaiChiFragment extends Fragment {
         DatabaseReference Dbref = FirebaseDatabase.getInstance().getReference("LoaiChi").child(_id);
         LoaiChi loaiChi = new LoaiChi(_id,_title,_date);
         Dbref.setValue(loaiChi);
+    }
+    private void  showThongBao(){
+        Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.dialog_thongbao_deletesuccess);
+        Button btnOk = (Button)dialog.findViewById(R.id.textOk);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
 }

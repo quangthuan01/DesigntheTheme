@@ -1,39 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_item_list_loaichi">
 
+<com.google.android.material.textfield.TextInputLayout
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:id="@+id/TextInputLayout"
+    android:layout_width="match_parent"
+    android:layout_marginTop="30dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_height="wrap_content">
     <EditText
         android:id="@+id/edittextDiaLogLoaiChi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
         android:text="TextView"
-        android:textColor="@color/pink"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/yellow"
+        android:textSize="25sp" />
+</com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/deleteLoaiChi"
+    <TextView
+        android:id="@+id/editTextDateDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttondelete"
-        android:text="@string/delete"
-        android:textAllCaps="false"
-        app:backgroundTint="@color/mred"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittextDiaLogLoaiChi"
-        app:layout_constraintVertical_bias=".3" />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:layout_below="@+id/TextInputLayout"
+        android:paddingLeft="20dp"
+        android:text="Name"
+        android:textColor="@color/yellow"
+        android:textSize="25sp" />
 
+    <Button
+        android:id="@+id/chonDateDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextInputLayout"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/buttonupdate"
+        android:text="Chon"
+        app:backgroundTint="@color/buton" />
+
+<LinearLayout
+    android:layout_below="@id/editTextDateDialog"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_marginTop="40dp"
+    android:layout_marginBottom="10dp"
+    android:layout_height="wrap_content">
     <Button
         android:id="@+id/updateLoaiChi"
         android:layout_width="wrap_content"
@@ -41,35 +62,16 @@
         android:background="@drawable/buttonupdate"
         android:text="@string/update"
         android:textAllCaps="false"
-        app:backgroundTint="@color/teal_200"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittextDiaLogLoaiChi"
-        app:layout_constraintVertical_bias=".3" />
-
-    <TextView
-        android:id="@+id/editTextDateDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="Name"
-        android:textSize="25sp"
-        android:paddingLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/pink"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittextDiaLogLoaiChi" />
-
+        android:layout_marginRight="50dp"
+        app:backgroundTint="@color/teal_200" />
     <Button
-        android:id="@+id/chonDateDialog"
+        android:id="@+id/deleteLoaiChi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextDateDialog"
-        app:layout_constraintTop_toBottomOf="@+id/edittextDiaLogLoaiChi" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@drawable/buttondelete"
+        android:text="@string/delete"
+        android:textAllCaps="false"
+        app:backgroundTint="@color/mred" />
+</LinearLayout>
+
+</RelativeLayout>

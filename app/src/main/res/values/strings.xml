@@ -13,6 +13,12 @@
     <string name="name_phone">Name Phone</string>
     <string name="delete">Delete</string>
     <string name="update">Update</string>
+    <string name="thongbao">Warning</string>
+    <string name="do_you_want_to_delete_or_not">Do you want to delete or not?</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="you_have_successfully_deleted">You have successfully deleted!</string>
+    <string name="notification">Notification</string>
 
     <array name="courses">
         <item>IPhone</item>

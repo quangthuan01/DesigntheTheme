@@ -3,23 +3,15 @@ package com.example.thietkegiaodien.model;
 public class LoaiChi {
     String IdChi ;
     String TitleChi;
-    String Date;
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
-    }
+    String DateChi;
 
     public LoaiChi() {
     }
 
-    public LoaiChi(String idChi, String titleChi, String Date) {
+    public LoaiChi(String idChi, String titleChi, String dateChi) {
         IdChi = idChi;
         TitleChi = titleChi;
-        Date = Date;
+        DateChi = dateChi;
     }
 
     public String getIdChi() {
@@ -36,5 +28,13 @@ public class LoaiChi {
 
     public void setTitleChi(String titleChi) {
         TitleChi = titleChi;
+    }
+
+    public String getDateChi() {
+        return DateChi;
+    }
+
+    public void setDateChi(String dateChi) {
+        DateChi = dateChi;
     }
 }

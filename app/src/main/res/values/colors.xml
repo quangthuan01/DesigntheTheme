@@ -12,5 +12,11 @@
     <color name="mred">#FD2414</color>
     <color name="dark">#0000CD</color>
     <color name="bluesky">#94DDF6</color>
+    <color name="primary">#37474f</color>
+    <color name="buton">#607d8b</color>
+    <color name="backround">#8eacbb</color>
+    <color name="dialog">#102027</color>
+    <color name="text_cancel_dialog">#ff6f00</color>
+    <color name="text_delete_dialog">#d32f2f</color>
 
 </resources>

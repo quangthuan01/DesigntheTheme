@@ -11,20 +11,25 @@ import com.example.thietkegiaodien.model.LoaiChi;
 
 import java.util.List;
 
-public class LoaiChiAdapter extends BaseAdapter {
-    private   List<LoaiChi> data;
-    private Context context;
+public class SpinnerKhoanChiAdapter extends BaseAdapter {
+    List<LoaiChi> data;
+    Context context;
 
-    public LoaiChiAdapter(List<LoaiChi> data, Context context) {
+    public SpinnerKhoanChiAdapter(List<LoaiChi> data, Context context) {
         this.data = data;
         this.context = context;
     }
-
-//    public void updateData(List<LoaiChi> _data){
-//        data.clear();
-//        data.addAll(_data);
-//        notifyDataSetChanged();
-//    }
+    public  int getPosition(String Title) {
+        int index  = -1;
+        for (int i  = 0; i<data.size(); i++){
+            LoaiChi loaiChi = data.get(i);
+            if (loaiChi.getTitleChi().equals(Title)){
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
 
     @Override
     public int getCount() {
@@ -44,16 +49,12 @@ public class LoaiChiAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        if (view == null) {
-            view = View.inflate(parent.getContext(), R.layout.item_list_loaichi, null);
-
+        if (convertView == null) {
+            view = View.inflate(parent.getContext(), R.layout.item_spinner_khoanchi, null);
         }
+        TextView spn_loaichi = ((TextView) view.findViewById(R.id.item_spinner_KhoanChi));
         LoaiChi loaiChi = (LoaiChi) getItem(position);
-        TextView textTheLoai = view.findViewById(R.id.item_textLoaiChi);
-        TextView textDate = view.findViewById(R.id.item_textDateLoaiChi);
-        textTheLoai.setText(loaiChi.getTitleChi());
-        textDate.setText(loaiChi.getDateChi());
-
+        spn_loaichi.setText(loaiChi.getTitleChi());
         return view;
     }
 }
