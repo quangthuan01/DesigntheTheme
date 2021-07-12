@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_item_list_loaichi">
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edittextDiaLogLoaiThu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:text="TextView"
+            android:textColor="@color/yellow"
+            android:textSize="25sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/editTextDateDialogThu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:layout_below="@+id/TextInputLayout"
+        android:paddingLeft="20dp"
+        android:text="Name"
+        android:textColor="@color/yellow"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/chonDateDialogThu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextInputLayout"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/buttonupdate"
+        android:text="Chon"
+        app:backgroundTint="@color/buton" />
+
+    <LinearLayout
+        android:layout_below="@id/editTextDateDialogThu"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/updateLoaiThu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonupdate"
+            android:text="@string/update"
+            android:textAllCaps="false"
+            android:layout_marginRight="50dp"
+            app:backgroundTint="@color/teal_200" />
+        <Button
+            android:id="@+id/deleteLoaiThu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttondelete"
+            android:text="@string/delete"
+            android:textAllCaps="false"
+            app:backgroundTint="@color/mred" />
+    </LinearLayout>
+
+</RelativeLayout>

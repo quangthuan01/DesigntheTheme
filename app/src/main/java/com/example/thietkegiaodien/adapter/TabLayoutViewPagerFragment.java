@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabViewPagerFragmentChi extends FragmentPagerAdapter {
+public class TabLayoutViewPagerFragment extends FragmentPagerAdapter {
 
     //Initialize array list
     List<Fragment> fragmentList = new ArrayList<>();
@@ -22,7 +22,7 @@ public class TabViewPagerFragmentChi extends FragmentPagerAdapter {
         stringList.add(s);
     }
 
-    public TabViewPagerFragmentChi(FragmentManager fragmentManager) {
+    public TabLayoutViewPagerFragment(FragmentManager fragmentManager) {
         super(fragmentManager);
     }
 

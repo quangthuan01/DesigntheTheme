@@ -1,7 +1,6 @@
 package com.example.thietkegiaodien;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -11,8 +10,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
-import android.content.ClipData;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,10 +17,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.thietkegiaodien.fragment.EmailFragment;
-import com.example.thietkegiaodien.fragment.HomeFragment;
+import com.example.thietkegiaodien.fragment.ChiFragment;
 import com.example.thietkegiaodien.fragment.ListFragment;
 import com.example.thietkegiaodien.fragment.MessagesFragment;
 import com.example.thietkegiaodien.fragment.MusicFragment;
+import com.example.thietkegiaodien.fragment.ThuFragment;
 import com.example.thietkegiaodien.login.Login;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.home:
-                        fragment = new HomeFragment();
+                        fragment = new ChiFragment();
                         loadFragment(fragment);
                         break;
                     case R.id.search:
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(fragment);
                         break;
                     case R.id.messager:
-                        fragment = new MessagesFragment();
+                        fragment = new ThuFragment();
                         loadFragment(fragment);
                         break;
                     case R.id.email:

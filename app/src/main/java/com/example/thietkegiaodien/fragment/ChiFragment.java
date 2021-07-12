@@ -9,13 +9,10 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.thietkegiaodien.R;
-import com.example.thietkegiaodien.adapter.LoginAdapterFragment;
-import com.example.thietkegiaodien.adapter.TabViewPagerFragmentChi;
-import com.example.thietkegiaodien.login.LoginTabFragment;
-import com.example.thietkegiaodien.login.RegisterTabFragment;
+import com.example.thietkegiaodien.adapter.TabLayoutViewPagerFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class HomeFragment extends Fragment {
+public class ChiFragment extends Fragment {
     private TabLayout tabLayoutHome;
     private ViewPager viewPagerHome;
     @Override
@@ -26,7 +23,7 @@ public class HomeFragment extends Fragment {
         viewPagerHome = mview.findViewById(R.id.viewPagerHome);
 
         //Initialize adapter
-        TabViewPagerFragmentChi adapter = new TabViewPagerFragmentChi(getParentFragmentManager());
+        TabLayoutViewPagerFragment adapter = new TabLayoutViewPagerFragment(getParentFragmentManager());
         //add fragment
         adapter.addFragmentChi(new KhoanChiFragment(), "Khoan Chi");
         adapter.addFragmentChi(new LoaiChiFragment(), "Loai Chi");

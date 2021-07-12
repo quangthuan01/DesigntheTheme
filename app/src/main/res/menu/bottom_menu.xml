@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bank"
+        android:title="Banking"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/bank"/>
+    <item
+        android:id="@+id/work"
+        android:title="Work"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/work"/>
+    <item
+        android:id="@+id/holder"
+        android:title=""
+        app:showAsAction="ifRoom"
+        android:enabled="false"/>
+    <item
+        android:id="@+id/sale"
+        android:title="Sale"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/sale"/>
+    <item
+        android:id="@+id/persion"
+        android:title="Sale"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/person"/>
+
+</menu>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffb067"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".fragment.ChiFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutHome"

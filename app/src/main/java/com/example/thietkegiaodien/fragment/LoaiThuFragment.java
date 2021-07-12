@@ -17,14 +17,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.thietkegiaodien.MovableFloatingActionButton;
 import com.example.thietkegiaodien.R;
-import com.example.thietkegiaodien.adapter.CategoryAdapter;
 import com.example.thietkegiaodien.adapter.LoaiChiAdapter;
-import com.example.thietkegiaodien.model.Category;
+import com.example.thietkegiaodien.adapter.LoaiThuAdapter;
 import com.example.thietkegiaodien.model.LoaiChi;
+import com.example.thietkegiaodien.model.LoaiThu;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -33,40 +34,43 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
-public class LoaiChiFragment extends Fragment {
-    private List<LoaiChi> loaiChiList;
-    private LoaiChi loaiChiModel;
-    private LoaiChiAdapter loaiChiAdapter;
-    private ListView listLoaiChi;
-    private MovableFloatingActionButton fabLoaiChi;
-    private DatabaseReference DbRef;
+
+public class LoaiThuFragment extends Fragment {
+    private LoaiThuAdapter loaiThuAdapter;
+    private LoaiThu loaiThuModel;
+    private List<LoaiThu> loaiThuList;
+    private ListView listViewLoai;
+    private MovableFloatingActionButton fabLoai;
+    private DatabaseReference databaseReference;
     private AlertDialog alertDialog;
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup mview = (ViewGroup) inflater.inflate(R.layout.fragment_chi_loaichi,container,false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_thu_loaithu, container, false);
 
-        listLoaiChi = mview.findViewById(R.id.listViewLoaiChi);
-        fabLoaiChi = mview.findViewById(R.id.fab_LoaiChi);
+        listViewLoai = view.findViewById(R.id.listViewLoaiThu);
+        fabLoai = view.findViewById(R.id.fabThu);
+        loaiThuList = new ArrayList<>();
 
-        loaiChiList = new ArrayList<>();
-        DbRef = FirebaseDatabase.getInstance().getReference().child("LoaiChi");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("LoaiThu");
         // get data to fire ->> app
-        DbRef.addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                loaiChiList.clear();
-                for (DataSnapshot LoaiChiDatasnaps : snapshot.getChildren()) {
-                    LoaiChi loaiChi = LoaiChiDatasnaps.getValue(LoaiChi.class);
-                    loaiChiList.add(loaiChi);
+                loaiThuList.clear();
+                for (DataSnapshot LoaiThuDatasnaps : snapshot.getChildren()) {
+                    LoaiThu loaiThu = LoaiThuDatasnaps.getValue(LoaiThu.class);
+                    loaiThuList.add(loaiThu);
                 }
-                loaiChiAdapter = new LoaiChiAdapter(loaiChiList,getActivity());
-                listLoaiChi.setAdapter(loaiChiAdapter);
+                loaiThuAdapter = new LoaiThuAdapter(loaiThuList, getActivity());
+                listViewLoai.setAdapter(loaiThuAdapter);
             }
 
             @Override
@@ -74,17 +78,18 @@ public class LoaiChiFragment extends Fragment {
 
             }
         });
+
         //insert
-        fabLoaiChi.setOnClickListener(new View.OnClickListener() {
+        fabLoai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.item_insert_loaichi);
+                dialog.setContentView(R.layout.item_insert_loaithu);
                 //anhsa trong item dia log
-                 EditText editTextTitle = dialog.findViewById(R.id.item_text_loaichiTitle);
-                 TextView textDate = dialog.findViewById(R.id.item_text_loaichiDate);
-                Button chonDate  = dialog.findViewById(R.id.btn_ChonDate);
-                Button Insert = dialog.findViewById(R.id.btn_insert_LoaiChi);
+                EditText editTextTitle = dialog.findViewById(R.id.item_text_loaiThuTitle);
+                TextView textDate = dialog.findViewById(R.id.item_text_loaiThuDate);
+                Button chonDate  = dialog.findViewById(R.id.btn_ChonDateThu);
+                Button Insert = dialog.findViewById(R.id.btn_insert_LoaiThu);
 
                 chonDate.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -120,11 +125,10 @@ public class LoaiChiFragment extends Fragment {
                             textDate.requestFocus();
                             return;
                         }else {
-
-                            LoaiChi loaiChi_Model = new LoaiChi(id, title, date);
-                            DbRef.child(loaiChi_Model.getIdChi()).setValue(loaiChi_Model);
-                            Toast.makeText(getActivity(), "Insert " + editTextTitle.getText().toString() + " successful", Toast.LENGTH_SHORT).show();
-                            dialog.dismiss();
+                        LoaiThu loaiThu = new LoaiThu(id, title,date);
+                        databaseReference.child(loaiThu.getIdLoaiThu()).setValue(loaiThu);
+                        Toast.makeText(getActivity(), "Insert " + editTextTitle.getText().toString() + " successful", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                         }
                     }
                 });
@@ -132,22 +136,22 @@ public class LoaiChiFragment extends Fragment {
             }
         });
 
-        listLoaiChi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewLoai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loaiChiModel = (LoaiChi) loaiChiAdapter.getItem(position);
-                String _id_ = loaiChiModel.getIdChi();
+                loaiThuModel = (LoaiThu) loaiThuAdapter.getItem(position);
+                String _id_ = loaiThuModel.getIdLoaiThu();
 
-                Dialog dialogLoaiChi = new Dialog(getActivity(),R.style.dialogAnimation);
-                dialogLoaiChi.setContentView(R.layout.dialog_loaichi);
-                EditText edt_LoaiChi = dialogLoaiChi.findViewById(R.id.edittextDiaLogLoaiChi);
-                TextView textDate1 = dialogLoaiChi.findViewById(R.id.editTextDateDialog);
-                Button btn_Chon  =dialogLoaiChi.findViewById(R.id.chonDateDialog);
-                Button btn_Delete = dialogLoaiChi.findViewById(R.id.deleteLoaiChi);
-                Button btn_Update = dialogLoaiChi.findViewById(R.id.updateLoaiChi);
+                Dialog dialogLoaiThu = new Dialog(getActivity(),R.style.dialogAnimation);
+                dialogLoaiThu.setContentView(R.layout.dialog_loaithu);
+                EditText edt_LoaiThu = dialogLoaiThu.findViewById(R.id.edittextDiaLogLoaiThu);
+                TextView textDate1 = dialogLoaiThu.findViewById(R.id.editTextDateDialogThu);
+                Button btn_Chon  =dialogLoaiThu.findViewById(R.id.chonDateDialogThu);
+                Button btn_Delete = dialogLoaiThu.findViewById(R.id.deleteLoaiThu);
+                Button btn_Update = dialogLoaiThu.findViewById(R.id.updateLoaiThu);
 
-                edt_LoaiChi.setText(loaiChiModel.getTitleChi());
-                textDate1.setText(loaiChiModel.getDateChi());
+                edt_LoaiThu.setText(loaiThuModel.getTitleLoaiThu());
+                textDate1.setText(loaiThuModel.getDateLoaiThu());
 
                 btn_Chon.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -171,11 +175,11 @@ public class LoaiChiFragment extends Fragment {
                 btn_Update.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String  Title = edt_LoaiChi.getText().toString();
+                        String  Title = edt_LoaiThu.getText().toString();
                         String date = textDate1.getText().toString();
                         upDateData(_id_,Title,date);
-                        Toast.makeText(getActivity(),"Update "+ edt_LoaiChi.getText().toString()+" successful", Toast.LENGTH_SHORT).show();
-                        dialogLoaiChi.dismiss();
+                        Toast.makeText(getActivity(),"Update "+ edt_LoaiThu.getText().toString()+" successful", Toast.LENGTH_SHORT).show();
+                        dialogLoaiThu.dismiss();
                     }
                 });
 
@@ -198,8 +202,8 @@ public class LoaiChiFragment extends Fragment {
                             textDelete.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    deleteLoaiChi(_id_);
-                                    dialogLoaiChi.dismiss();
+                                    deleteLoaiThu(_id_);
+                                    dialogLoaiThu.dismiss();
                                     alertDialog.dismiss();
 
                                 }
@@ -217,19 +221,21 @@ public class LoaiChiFragment extends Fragment {
                     }
                 });
 
-                dialogLoaiChi.show();
+                dialogLoaiThu.show();
             }
         });
 
-        return mview;
+
+        return view;
     }
-    private void deleteLoaiChi(String idChi) {
-        DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference("LoaiChi").child(idChi);
+
+    private void deleteLoaiThu(String idThu) {
+        DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference("LoaiThu").child(idThu);
         Task<Void> task = DbRef.removeValue();
         task.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-              showThongBao();
+                showThongBao();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -240,9 +246,9 @@ public class LoaiChiFragment extends Fragment {
     }
 
     private void upDateData(String _id, String _title, String _date) {
-        DatabaseReference Dbref = FirebaseDatabase.getInstance().getReference("LoaiChi").child(_id);
-        LoaiChi loaiChi = new LoaiChi(_id,_title,_date);
-        Dbref.setValue(loaiChi);
+        DatabaseReference Dbref = FirebaseDatabase.getInstance().getReference("LoaiThu").child(_id);
+        LoaiThu loaiThu = new LoaiThu(_id,_title,_date);
+        Dbref.setValue(loaiThu);
     }
     private void  showThongBao(){
         Dialog dialog = new Dialog(getActivity());
@@ -256,5 +262,4 @@ public class LoaiChiFragment extends Fragment {
         });
         dialog.show();
     }
-
 }
